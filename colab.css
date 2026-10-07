@@ -1,0 +1,16 @@
+/* Couleurs de code proches du thème clair de Colab. */
+body {
+  --jp-mirror-editor-keyword-color: #af00db !important;
+  --jp-mirror-editor-def-color: #795e26 !important;
+  --jp-mirror-editor-builtin-color: #795e26 !important;
+  --jp-mirror-editor-string-color: #a31515 !important;
+  --jp-mirror-editor-string-2-color: #a31515 !important;
+  --jp-mirror-editor-number-color: #098658 !important;
+  --jp-mirror-editor-comment-color: #008000 !important;
+  --jp-mirror-editor-operator-color: #000000 !important;
+  --jp-mirror-editor-variable-color: #001080 !important;
+  --jp-mirror-editor-variable-2-color: #001080 !important;
+  --jp-mirror-editor-property-color: #001080 !important;
+  --jp-mirror-editor-atom-color: #0000ff !important;
+  --jp-code-font-size: 14px !important;
+}
