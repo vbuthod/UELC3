@@ -1,6 +1,6 @@
 {
   "@jupyterlab/completer-extension:manager": {
-    "autoCompletion": true
+    "autoCompletion": false
   },
   "@jupyterlab/codemirror-extension:plugin": {
     "defaultConfig": {
