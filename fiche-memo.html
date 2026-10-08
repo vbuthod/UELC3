@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UELC3 : fiche memo</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Arial, sans-serif; max-width: 780px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; color: #1a1a1a; }
+  h1 { font-size: 1.6rem; border-bottom: 2px solid #333; padding-bottom: 0.3rem; }
+  h2 { font-size: 1.25rem; margin-top: 2rem; color: #1a4d8f; }
+  code { background: #f0f0f0; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.92em; }
+  pre { background: #f5f5f5; padding: 0.8rem; border-radius: 6px; overflow-x: auto; border: 1px solid #ddd; }
+  pre code { background: none; padding: 0; }
+  table { border-collapse: collapse; margin: 0.8rem 0; }
+  th, td { border: 1px solid #ccc; padding: 0.4rem 0.7rem; text-align: left; }
+  th { background: #eee; }
+  strong { color: #111; }
+  @media print {
+    body { margin: 0; max-width: none; }
+  }
+</style>
+</head>
+<body>
+<h1>UELC3 : fiche mémo (séances 1 à 5)</h1>
+<h2>Séance 1 : les bases</h2>
+<p><strong>Types</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Nom Python</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>texte</td>
+<td><code>str</code></td>
+<td><code>"bonjour"</code></td>
+</tr>
+<tr>
+<td>entier</td>
+<td><code>int</code></td>
+<td><code>42</code></td>
+</tr>
+<tr>
+<td>décimal</td>
+<td><code>float</code></td>
+<td><code>3.14</code></td>
+</tr>
+<tr>
+<td>booléen</td>
+<td><code>bool</code></td>
+<td><code>True</code> / <code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p>Conversion : <code>str(14)</code> → <code>"14"</code> ; <code>int("14")</code> → <code>14</code> ; <code>float(14)</code> → <code>14.0</code> ; <code>int(3.99)</code> → <code>3</code> (tronque, n'arrondit pas)</p>
+<p><strong>Opérateurs</strong></p>
+<p><code>+ - * /</code> classiques ; <code>**</code> puissance ; <code>//</code> quotient entier ; <code>%</code> reste de la division</p>
+<p>Priorité : <code>* / // %</code> avant <code>+ -</code>, comme en maths. Parenthèses pour imposer un autre ordre.</p>
+<p><code>"ab" * 3</code> → <code>"ababab"</code> (répétition de texte) ; <code>"a" + "b"</code> → concaténation de texte ; additionner texte et nombre = erreur.</p>
+<p><code>input("question")</code> affiche la question et renvoie toujours un <code>str</code>, même pour des chiffres tapés : convertir avec <code>int(...)</code> ou <code>float(...)</code> si on veut calculer.</p>
+<p><strong>Variables</strong></p>
+<p><code>nom = valeur</code> range une valeur dans une variable (<code>=</code> n'est pas une égalité mathématique, ça se lit « mets... dans... »). Réassigner une variable écrase l'ancienne valeur.</p>
+<p><strong>print</strong></p>
+<p><code>print(a, b, c)</code> : affiche plusieurs choses séparées par un espace automatique.</p>
+<p><code>print(a + " " + b)</code> : concaténation, il faut écrire les espaces soi-même.</p>
+<p>f-string : <code>print(f"{nom} a {age} ans")</code> glisse des variables directement dans le texte.</p>
+<p><code>\n</code> dans une chaîne = retour à la ligne.</p>
+<p><strong>Commentaires</strong> : tout ce qui suit un <code>#</code> sur une ligne est ignoré par Python.</p>
+<h2>Séance 2 : les fonctions</h2>
+<pre><code class="language-python">def nom_fonction(parametre1, parametre2):
+    # corps, indenté de 4 espaces
+    return resultat
+</code></pre>
+<ul>
+<li><strong>Définir</strong> (<code>def ...:</code>) n'exécute rien. <strong>Appeler</strong> (<code>nom_fonction(valeurs)</code>) exécute le code.</li>
+<li><em>paramètre</em> = nom utilisé dans la définition. <em>argument</em> = valeur donnée au moment de l'appel.</li>
+<li>L'ordre des arguments compte.</li>
+<li><code>return valeur</code> renvoie un résultat réutilisable (stockable dans une variable, recalculable). <code>print(...)</code> affiche seulement à l'écran, puis c'est perdu.</li>
+<li>Une fonction sans <code>return</code> renvoie <code>None</code> (aucun résultat ; <code>None + 1</code> provoque une erreur).</li>
+<li>Après un <code>return</code>, la fonction s'arrête immédiatement : les lignes suivantes ne s'exécutent jamais.</li>
+<li>Valeur par défaut : <code>def f(x, y=1):</code> rend <code>y</code> optionnel à l'appel. Les paramètres avec valeur par défaut se placent après ceux qui n'en ont pas.</li>
+<li>Une variable créée à l'intérieur d'une fonction n'existe pas à l'extérieur.</li>
+<li>Docstring : <code>"""texte"""</code> juste sous le <code>def</code>, décrit la fonction, affichée par <code>help(fonction)</code>.</li>
+</ul>
+<h2>Séance 3 : les conditions</h2>
+<pre><code class="language-python">if condition:
+    ...
+elif autre_condition:
+    ...
+else:
+    ...
+</code></pre>
+<p>Comparateurs : <code>== != &lt; &gt; &lt;= &gt;=</code> (<code>=</code> assigne une valeur, <code>==</code> compare et renvoie <code>True</code>/<code>False</code>, ne pas confondre).</p>
+<p><code>and</code> (vrai si les deux le sont), <code>or</code> (vrai si au moins un l'est), <code>not</code> (inverse vrai/faux).</p>
+<p>Piège fréquent : <code>age == 18 or 19</code> ne teste pas ce qu'on croit (<code>19</code> seul est toujours vrai). Il faut répéter la comparaison : <code>age == 18 or age == 19</code>.</p>
+<p>Python teste les <code>elif</code> dans l'ordre et s'arrête au premier vrai : un test trop large en premier empêche les suivants d'être atteints.</p>
+<p>Comparer du texte compare l'ordre alphabétique, caractère par caractère (toutes les majuscules sont considérées avant toutes les minuscules).</p>
+<p>Dans une fonction, si le <code>if</code> fait déjà un <code>return</code>, pas besoin d'un <code>else</code> après : si on continue, c'est que la condition était fausse.</p>
+<h2>Séance 4 : les boucles while</h2>
+<pre><code class="language-python">while condition:
+    ...   # répété tant que la condition reste vraie
+</code></pre>
+<ul>
+<li>Il faut toujours quelque chose qui rapproche la condition de devenir fausse (<code>i += 1</code>, <code>n -= 1</code>...), sinon boucle infinie.</li>
+<li>Compteur : <code>i = 0</code> avant la boucle, <code>i += 1</code> dedans.</li>
+<li>Accumulateur : <code>total = 0</code> avant la boucle (jamais réinitialisé dedans), <code>total += ...</code> à chaque tour.</li>
+<li><code>break</code> : sort immédiatement de la boucle, sans finir le tour ni retester la condition.</li>
+<li><code>continue</code> : passe directement au tour suivant. Attention : un <code>continue</code> placé avant la ligne qui fait avancer le compteur crée une boucle infinie.</li>
+<li><code>while True:</code> suivi d'un <code>break</code> conditionnel : motif courant pour « répéter jusqu'à ce que ».</li>
+<li>Une boucle peut être imbriquée dans une autre : la boucle intérieure refait tous ses tours à chaque tour de la boucle extérieure.</li>
+</ul>
+<h2>Séance 5 : les listes et l'indexation</h2>
+<p><strong>Créer et accéder</strong></p>
+<p><code>liste = [a, b, c]</code> : indices à partir de <code>0</code>. <code>liste[-1]</code> = dernier élément, <code>liste[-2]</code> = avant-dernier.</p>
+<p><code>len(liste)</code> = nombre d'éléments (dernier indice valide = <code>len(liste) - 1</code>).</p>
+<p><code>liste[i] = nouvelle_valeur</code> modifie l'élément à l'indice <code>i</code> (une liste est modifiable, contrairement à une chaîne).</p>
+<p><strong>Slicing (découper)</strong></p>
+<p><code>liste[i:j]</code> = éléments de l'indice <code>i</code> jusqu'à <code>j</code> <strong>exclu</strong>.</p>
+<p><code>liste[:3]</code> = les 3 premiers ; <code>liste[3:]</code> = à partir de l'indice 3 ; <code>liste[-2:]</code> = les 2 derniers.</p>
+<p>Marche pareil sur les chaînes : <code>mot[0]</code>, <code>mot[1:3]</code>, <code>mot[-1]</code>.</p>
+<p><strong>Méthodes de liste</strong> (modifient la liste directement, ne renvoient rien d'utile)</p>
+<table>
+<thead>
+<tr>
+<th>Méthode</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>liste.append(x)</code></td>
+<td>ajoute <code>x</code> à la fin</td>
+</tr>
+<tr>
+<td><code>liste.pop(i)</code></td>
+<td>enlève (et renvoie) l'élément à l'indice <code>i</code></td>
+</tr>
+<tr>
+<td><code>liste.remove(v)</code></td>
+<td>enlève la première occurrence de la valeur <code>v</code></td>
+</tr>
+<tr>
+<td><code>liste.sort()</code></td>
+<td>trie sur place, ordre croissant</td>
+</tr>
+<tr>
+<td><code>liste.sort(reverse=True)</code></td>
+<td>trie sur place, ordre décroissant</td>
+</tr>
+<tr>
+<td><code>liste.index(v)</code></td>
+<td>indice de la première occurrence de <code>v</code></td>
+</tr>
+</tbody>
+</table>
+<p>Piège : <code>x = liste.sort()</code> met <code>None</code> dans <code>x</code> (<code>.sort()</code> ne renvoie rien ; c'est <code>liste</code> elle-même qui est triée).</p>
+<p><strong>Fonctions qui ne modifient rien, renvoient un résultat</strong></p>
+<p><code>len(liste)</code>, <code>sum(liste)</code>, <code>min(liste)</code>, <code>max(liste)</code>.</p>
+<p><code>sorted(liste)</code> renvoie une <strong>nouvelle</strong> liste triée sans toucher à l'originale ; <code>sorted(liste, reverse=True)</code> pour l'ordre décroissant.</p>
+<p><strong>Chaînes de caractères</strong></p>
+<p><code>mot.upper()</code>, <code>mot.lower()</code> renvoient une nouvelle chaîne, l'originale n'est pas modifiée. Une chaîne ne se modifie pas par indice (<code>mot[0] = "P"</code> provoque une erreur), contrairement à une liste.</p>
+<p><strong>Listes et fonctions</strong></p>
+<p>Une liste peut être un argument de fonction, ou une valeur renvoyée. Une fonction peut renvoyer plusieurs valeurs à la fois : <code>return a, b</code>, récupérées avec <code>x, y = fonction(...)</code>.</p>
+<p>Construire une liste avec une boucle :</p>
+<pre><code class="language-python">resultat = []
+i = 1
+while i &lt;= n:
+    resultat.append(i * i)
+    i += 1
+</code></pre>
+</body>
+</html>

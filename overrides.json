@@ -1,0 +1,21 @@
+{
+  "@jupyterlab/completer-extension:manager": {
+    "autoCompletion": false
+  },
+  "@jupyterlab/codemirror-extension:plugin": {
+    "defaultConfig": {
+      "indentUnit": "4",
+      "tabSize": 4,
+      "matchBrackets": true,
+      "autoClosingBrackets": true
+    }
+  },
+  "@jupyterlab/notebook-extension:tracker": {
+    "codeCellConfig": {
+      "indentUnit": "4",
+      "tabSize": 4,
+      "autoClosingBrackets": true,
+      "lineNumbers": false
+    }
+  }
+}
